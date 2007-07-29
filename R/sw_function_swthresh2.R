@@ -27,6 +27,10 @@ function (swd, policy, by.level, type, nthresh, value = 0.1, Q = 0.05)
     grid$theta <- swd$gridlon * pi/180
     grid$phi <- swd$gridlat * pi/180  
     
+    rangedetail <- NULL
+    for (i in 1:(swd$nlevels - 1))
+        rangedetail <- rbind(rangedetail, range(swd$detail[[i]]))
+        
     if (by.level) {
         thresh.detail <- mrsfield.comp.thresh.level(grid, swd$coeff, site, swd$netlab, swd$eta, nthresh, policy, Q, type)
     } else {
@@ -34,10 +38,10 @@ function (swd, policy, by.level, type, nthresh, value = 0.1, Q = 0.05)
         thresh.detail <- mrsfield.comp.thresh.global(grid, swd$coeff, site, swd$netlab, swd$eta, lam, nthresh, type)
     }
 
-    for (i in 1:(swd$nlevels - 1))
+    for (i in 1:(swd$nlevels - 1)) 
         swd$detail[[i]] <- t(matrix(thresh.detail[, i], nrow=length(swd$gridlat))) 
-
-    thresh.info <- list(policy=policy, by.level=by.level, type=type, nthresh=nthresh)
+    
+    thresh.info <- list(policy=policy, by.level=by.level, type=type, nthresh=nthresh, rangedetail=rangedetail)
     if (policy == "probability") thresh.info <- c(thresh.info, list(value=value))
     if (policy == "fdr") thresh.info <- c(thresh.info, list(Q=Q))
                         

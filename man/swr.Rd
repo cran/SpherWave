@@ -26,33 +26,33 @@ Ser.} B, \bold{66}, 221--238.
 }
 \examples{
 ### Observations of year 1967
-data(temperature)
-names(temperature)
+#data(temperature)
+#names(temperature)
 
 # Temperatures on 939 weather stations of year 1967    
-temp67 <- temperature$obs[temperature$year == 1967] 
+#temp67 <- temperature$obs[temperature$year == 1967] 
 # Locations of 939 weather stations    
-latlon <- temperature$latlon[temperature$year == 1967, ]
+#latlon <- temperature$latlon[temperature$year == 1967, ]
 
 ### Network design by BUD
-data(netlab)
+#data(netlab)
 
 ### Bandwidth for Poisson kernel
-eta <- c(0.961, 0.923, 0.852, 0.723, 0.506)
+#eta <- c(0.961, 0.923, 0.852, 0.723, 0.506)
 
 ### SBF representation of the observations by pls
-out.pls <- sbf(obs=temp67, latlon=latlon, netlab=netlab, eta=eta, 
-    method="pls", grid.size=c(50, 100), lambda=0.89)
+#out.pls <- sbf(obs=temp67, latlon=latlon, netlab=netlab, eta=eta, 
+#    method="pls", grid.size=c(50, 100), lambda=0.89)
 
 ### Decomposition
-out.dpls <- swd(out.pls)
+#out.dpls <- swd(out.pls)
 
 ### Thresholding
-out.univ <- swthresh(out.dpls, policy="universal", by.level=TRUE, 
-    type="hard", nthresh=4)  
+#out.univ <- swthresh(out.dpls, policy="universal", by.level=TRUE, 
+#    type="hard", nthresh=4)  
 
 ### Reconstruction
-out.rec <- swr(out.univ)
-sw.plot(z=out.rec, type="recon", xlab="", ylab="")
+#out.rec <- swr(out.univ)
+#sw.plot(z=out.rec, type="recon", xlab="", ylab="")
 }
 \keyword{nonparametric}

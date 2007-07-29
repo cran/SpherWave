@@ -49,7 +49,7 @@ An object of class `swd'. This object is a list with the following components.
 \item{density}{density of SW coefficients}
 \item{detail}{List of details at different resolution levels}
 \item{swcoeff}{spherical wavelet coefficients}
-\item{thresh.info}{thresholding information}
+\item{thresh.info}{thresholding information and ranges of local components before thresholding}
 }
 \references{
 Oh, H-S. and Li, T-H. (2004) Estimation of global temperature fields from scattered observations by 

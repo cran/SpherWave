@@ -38,19 +38,19 @@ Department of Statistics, Texas A\&M University, College Station.
 }
 \examples{
 ### Observations of year 1967
-data(temperature)
-names(temperature)
+#data(temperature)
+#names(temperature)
 
 # Locations of 939 weather stations    
-latlon <- temperature$latlon[temperature$year == 1967, ]
+#latlon <- temperature$latlon[temperature$year == 1967, ]
 
 #netlab <- network.design(latlon=latlon, method="cover",
 #    nlevel=c(507, 244, 117, 49, 22))
-netlab <- network.design(latlon=latlon, method="ModifyGottlemann", 
-    type="regular", x=3)
-netlab <- network.design(latlon=latlon, method="Gottlemann", 
-    type="regular", x=2)
-netlab <- network.design(latlon=latlon, method="Oh", 
-    type="reduce", x=5)
+#netlab <- network.design(latlon=latlon, method="ModifyGottlemann", 
+#    type="regular", x=3)
+#netlab <- network.design(latlon=latlon, method="Gottlemann", 
+#    type="regular", x=2)
+#netlab <- network.design(latlon=latlon, method="Oh", 
+#    type="reduce", x=5)
 }
 \keyword{nonparametric}

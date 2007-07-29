@@ -36,17 +36,17 @@ Department of Statistics, Texas A\&M University, College Station.
 }
 \examples{
 ### Observations of year 1967
-data(temperature)
-names(temperature)
+#data(temperature)
+#names(temperature)
 
 # Locations of 939 weather stations    
-latlon <- temperature$latlon[temperature$year == 1967, ]
+#latlon <- temperature$latlon[temperature$year == 1967, ]
 
-netlab <- reg.grid(x=3, latlon)
-netlab <- red.grid(x=3, latlon)
-netlab <- gotreg.grid(x=2, latlon)
-netlab <- gotred.grid(x=2, latlon)
-netlab <- hsreg.grid(x=5, latlon)
-netlab <- hsred.grid(x=5, latlon)
+#netlab <- reg.grid(x=3, latlon)
+#netlab <- red.grid(x=3, latlon)
+#netlab <- gotreg.grid(x=2, latlon)
+#netlab <- gotred.grid(x=2, latlon)
+#netlab <- hsreg.grid(x=5, latlon)
+#netlab <- hsred.grid(x=5, latlon)
 }
 \keyword{nonparametric}

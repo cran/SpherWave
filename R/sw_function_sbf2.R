@@ -277,7 +277,7 @@ function (theta, eta)
 function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", nlevel=256, pch=NULL, cex=NULL, ...) 
 {
     #oldpar <- par(no.readonly = TRUE)
-    
+
     if (type != "obs" & type != "network" & type != "field" & type != "swcoeff" & type != "decom" & type != "recon")
         stop("Possible types are obs, network, field, decom and recon.")
 
@@ -286,13 +286,14 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
  
     if (!is.null(sw)) lonlim <- sw$lonlim
     else if (is.null(lonlim)) lonlim <- c(-180, 180)
-            
+
     if ((is.null(sw) | class(sw) == "sbf" | class(sw) == "swd") & type == "obs") { 
         if (class(sw) == "sbf" | class(sw) == "swd") {
+ 
             z <- sw$obs
             latlon <- sw$latlon
         }
-        
+      
         old.par <- par(no.readonly = TRUE)
 
         temp <- image.plot.plt()
@@ -341,7 +342,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         par(plt = big.par$plt, xpd = FALSE)
         par(mfg = mfg.save, new = FALSE)
         invisible()
-    } 
+    }   
     if ((is.null(sw) | class(sw) == "sbf" | class(sw) == "swd") & type == "network") {
         if (class(sw) == "sbf" | class(sw) == "swd") {
             z <- sw$netlab
@@ -382,7 +383,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         par(new = TRUE, pty = "m", plt = smallplot, err = -1)
         plot(c(1, 2), c(0, 2 * nlab), type = "n", axes = FALSE, xlab = "", ylab = "")
         legend(x = 1, y = (2 * nlab - nlab/2), legend = paste("Level", 1:nlab, sep=" "),
-            pch = (pch - 1):(pch - 2 + nlab), cex = rep(0.8, nlab), col = timcolors)
+            pch = (pch):(pch - 1 + nlab), cex = 0.8, col = timcolors)
             
         mfg.save <- par()$mfg
         par(big.par)
@@ -394,7 +395,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         image.plot(sw$gridlon, sw$gridlat, sw$field, nlevel = nlevel,
             zlim=range(c(sw$obs, sw$field)), ylim = latlim, xlim = lonlim, ...)
         world(add = TRUE, ylim = latlim, xlim = lonlim)
-    }  
+    }     
     if (class(sw) == "swd" && type == "swcoeff") {
         par(mfrow=c(sw$nlevels %/% 2 + sw$nlevels %% 2, 2), mar = c(0.3, 1.5, 1.45, 1.5) + 0.1)
         
@@ -510,18 +511,22 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         #par(new = TRUE, pty = "m", plt = smallplot, err = -1)
         #image(iy, ix, t(iz), xaxt = "n", yaxt = "n", xlab = "", ylab = "", col = tim.colors(nlevel))
         #axis(1, mgp = c(3, 1, 0)/2)        
-    }      
+    }        
     if (class(sw) == "swd" & type == "decom") { 
         par(mfrow = c(sw$nlevels - 1, 2), mar = c(0.3, 1.5, 1.4, 1.5) + 0.1)
         rangeglobal <- range(unlist(sw$global))
-        rangedetail <- range(unlist(sw$detail))
+
         for (i in 1:(sw$nlevels - 1)) { 
             image.plot(sw$gridlon, sw$gridlat, sw$global[[i]], axes = FALSE, xlab = "", ylab = paste("Level", i+1), 
                 mgp = c(0.5,0,0), nlevel = nlevel, zlim = rangeglobal, ylim = latlim, xlim = lonlim, ...)
             if (i == 1) title("Global Component", line = 0.3)
-            world(add = TRUE, ylim = latlim, xlim = lonlim)
-            image.plot(sw$gridlon, sw$gridlat, sw$detail[[i]], axes = FALSE, xlab = "", ylab = paste("Level", i), 
-                mgp = c(0.5,0,0), nlevel = nlevel, ylim = latlim, xlim = lonlim, ...) #zlim = rangedetail,
+            world(add = TRUE, ylim = latlim, xlim = lonlim) 
+            if (is.list(sw$thresh.info))
+                image.plot(sw$gridlon, sw$gridlat, sw$detail[[i]], axes = FALSE, xlab = "", ylab = paste("Level", i), 
+                    mgp = c(0.5,0,0), nlevel = nlevel, ylim = latlim, xlim = lonlim, zlim = sw$thresh.info$rangedetail[i, ], ...)
+            else
+                image.plot(sw$gridlon, sw$gridlat, sw$detail[[i]], axes = FALSE, xlab = "", ylab = paste("Level", i), 
+                    mgp = c(0.5,0,0), nlevel = nlevel, ylim = latlim, xlim = lonlim, ...)            
             if (i == 1) title("Local Component", line = 0.3)
             world(add = TRUE, ylim = latlim, xlim = lonlim)
         }

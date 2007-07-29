@@ -23,26 +23,26 @@ gcv.lambda(obs, latlon, netlab, eta, approx=FALSE, lambda)
 }
 \examples{
 ### Observations of year 1967
-data(temperature)
-names(temperature)
+#data(temperature)
+#names(temperature)
 
 # Temperatures on 939 weather stations of year 1967    
-temp67 <- temperature$obs[temperature$year == 1967] 
+#temp67 <- temperature$obs[temperature$year == 1967] 
 # Locations of 939 weather stations    
-latlon <- temperature$latlon[temperature$year == 1967, ]
+#latlon <- temperature$latlon[temperature$year == 1967, ]
 
 ### Network design by BUD
-data(netlab)
+#data(netlab)
 
 ### Bandwidth for Poisson kernel
-eta <- c(0.961, 0.923, 0.852, 0.723, 0.506)
+#eta <- c(0.961, 0.923, 0.852, 0.723, 0.506)
 
 ### Select smoothing parameter lambda by generalized cross-validation
-lam <- seq(0.1, 0.9, ,9)
-gcv <- NULL
-for(i in 1:length(lam))
-    gcv <- c(gcv, gcv.lambda(obs=temp67, latlon=latlon, 
-        netlab=netlab, eta=eta, lambda=lam[i])$gcv)
-lam[gcv == min(gcv)]
+#lam <- seq(0.1, 0.9, ,9)
+#gcv <- NULL
+#for(i in 1:length(lam))
+#    gcv <- c(gcv, gcv.lambda(obs=temp67, latlon=latlon, 
+#        netlab=netlab, eta=eta, lambda=lam[i])$gcv)
+#lam[gcv == min(gcv)]
 }
 \keyword{nonparametric}
