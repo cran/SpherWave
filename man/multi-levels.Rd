@@ -6,7 +6,7 @@
 \title{Deciding the Number of Multi-Resolution Levels}
 \description{
 This function decides the number of multi-resolution levels by G\"{o}ttlemann's method, modified G\"{o}ttlemann's method
-or standard method.}
+or standard method.
 }
 \usage{
 modnetlevel(angle) # for modified G\"{o}ttlemann's grid
