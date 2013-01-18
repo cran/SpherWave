@@ -1,12 +1,11 @@
-4ccd17887314f4f1d8065bc7ff736e5a *DESCRIPTION
-766bd345c0f29546eb928c025aaf94e4 *NAMESPACE
-f005fd3e0a6676b8c6cf7b569a64b041 *R/loading.R
+a5664718b47fa65f142b6af16ab45986 *DESCRIPTION
+439ab23e5dc3e3bb8f6329e91eddf24d *NAMESPACE
 9e5ac7b7fc632f3d97e75d225ace5860 *R/sw_function_network2.R
 8b0d4a7b017fe5f24b8e74ed358699e2 *R/sw_function_sbf2.R
 ba27042f318624e84a7a10664c532de2 *R/sw_function_swd2.R
 3e36e2e504fedb2f61d8cca50d1246dd *R/sw_function_swthresh2.R
-28c2c54b7fe7bdcaecab20bba3cdc69b *data/netlab.R
-0b38222b0a65479c877f718829a96856 *data/temperature.R
+a65b9c1d9f57a356d0c92d7bc1e5718f *data/netlab.rda
+a10d21f3f6c58f98f19923473cc6a87a *data/temperature.rda
 4ccd42ee03b62e2b2da360dd7fbec4d7 *man/SpherWave-internal.Rd
 901c75960f2be0a27e22da08094a84e2 *man/SpherWave.Rd
 7464b97e571ecf155831f3b8834e8f99 *man/bandwidth.Rd
