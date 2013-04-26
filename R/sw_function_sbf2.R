@@ -296,7 +296,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
       
         old.par <- par(no.readonly = TRUE)
 
-        temp <- image.plot.plt()
+        temp <- imageplot.setup()
         smallplot <- temp$smallplot
         bigplot <- temp$bigplot
                 
@@ -354,7 +354,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         
         old.par <- par(no.readonly = TRUE)
         
-        temp <- image.plot.plt(legend.mar = 1, legend.width = 1.2 * 5)
+        temp <- imageplot.setup(legend.mar = 1, legend.width = 1.2 * 5)
         smallplot <- temp$smallplot
         bigplot <- temp$bigplot
                 
@@ -421,7 +421,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         
             old.par <- par(no.readonly = TRUE)
 
-            temp <- image.plot.plt()
+            temp <- imageplot.setup()
             smallplot <- temp$smallplot
             bigplot <- temp$bigplot
             
@@ -539,7 +539,7 @@ function (sw=NULL, z=NULL, latlon=NULL, latlim=NULL, lonlim=NULL, type="field", 
         #iy <- (boundarys + (boundarys[2] - boundarys[1])/2)[1:nlevel]
         #iz <- matrix(iy, nrow = 1, ncol = length(iy))
 
-        #temp <- image.plot.plt(horizon = TRUE)
+        #temp <- imageplot.setup(horizon = TRUE)
         #smallplot <- temp$smallplot
         #bigplot <- temp$bigplot
         #bigplot[3] <- bigplot[3] - (bigplot[3] - smallplot[4]) * 0.8
